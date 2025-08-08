@@ -53,8 +53,6 @@ window.addEventListener('scroll', () => {
 const contactForm = document.getElementById('contactForm');
 if (contactForm) {
     contactForm.addEventListener('submit', function(e) {
-        e.preventDefault();
-        
         // Get form data
         const formData = new FormData(this);
         const name = formData.get('name');
@@ -64,6 +62,7 @@ if (contactForm) {
         
         // Simple validation
         if (!name || !email || !subject || !message) {
+            e.preventDefault();
             showNotification('Please fill in all fields', 'error');
             return;
         }
@@ -71,15 +70,13 @@ if (contactForm) {
         // Email validation
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (!emailRegex.test(email)) {
+            e.preventDefault();
             showNotification('Please enter a valid email address', 'error');
             return;
         }
         
-        // Simulate form submission
+        // Show success message
         showNotification('Thank you for your message! I will get back to you soon.', 'success');
-        
-        // Reset form
-        this.reset();
     });
 }
 
