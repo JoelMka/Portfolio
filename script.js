@@ -80,7 +80,7 @@ if (contactForm) {
     });
 }
 
-// Notification system
+// Professional notification system
 function showNotification(message, type = 'info') {
     // Remove existing notifications
     const existingNotification = document.querySelector('.notification');
@@ -98,20 +98,28 @@ function showNotification(message, type = 'info') {
         </div>
     `;
     
-    // Add styles
+    // Add professional styles
+    const colors = {
+        success: { bg: '#10b981', shadow: 'rgba(16, 185, 129, 0.2)' },
+        error: { bg: '#ef4444', shadow: 'rgba(239, 68, 68, 0.2)' },
+        info: { bg: '#3b82f6', shadow: 'rgba(59, 130, 246, 0.2)' }
+    };
+    
     notification.style.cssText = `
         position: fixed;
         top: 100px;
         right: 20px;
-        background: ${type === 'success' ? '#10b981' : type === 'error' ? '#ef4444' : '#3b82f6'};
+        background: ${colors[type].bg};
         color: white;
         padding: 1rem 1.5rem;
-        border-radius: 10px;
-        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        border-radius: 12px;
+        box-shadow: 0 8px 25px ${colors[type].shadow};
         z-index: 10000;
         transform: translateX(400px);
         transition: transform 0.3s ease;
         max-width: 400px;
+        font-family: 'Inter', sans-serif;
+        font-weight: 500;
     `;
     
     // Add to page
@@ -138,7 +146,7 @@ function showNotification(message, type = 'info') {
     }, 5000);
 }
 
-// Scroll animations
+// Smooth scroll animations with intersection observer
 const observerOptions = {
     threshold: 0.1,
     rootMargin: '0px 0px -50px 0px'
@@ -154,13 +162,13 @@ const observer = new IntersectionObserver((entries) => {
 
 // Observe elements for animation
 document.addEventListener('DOMContentLoaded', () => {
-    const animateElements = document.querySelectorAll('.skill-category, .project-card, .certificate-card, .info-item, .contact-item');
+    const animateElements = document.querySelectorAll('.skill-category, .project-card, .certificate-card, .info-item, .contact-item, .interest-category');
     animateElements.forEach(el => {
         observer.observe(el);
     });
 });
 
-// Typing effect for hero title
+// Subtle typing effect for hero title
 function typeWriter(element, text, speed = 100) {
     let i = 0;
     element.innerHTML = '';
@@ -181,21 +189,21 @@ window.addEventListener('load', () => {
     const heroTitle = document.querySelector('.hero-title');
     if (heroTitle) {
         const originalText = heroTitle.innerHTML;
-        typeWriter(heroTitle, originalText, 50);
+        typeWriter(heroTitle, originalText, 80);
     }
 });
 
-// Parallax effect for hero section
+// Subtle parallax effect for hero section
 window.addEventListener('scroll', () => {
     const scrolled = window.pageYOffset;
     const hero = document.querySelector('.hero');
     if (hero) {
-        const rate = scrolled * -0.5;
+        const rate = scrolled * -0.2;
         hero.style.transform = `translateY(${rate}px)`;
     }
 });
 
-// Skills progress animation
+// Smooth skills animation
 function animateSkills() {
     const skillItems = document.querySelectorAll('.skill-item');
     skillItems.forEach((item, index) => {
@@ -221,17 +229,17 @@ if (skillsSection) {
     skillsObserver.observe(skillsSection);
 }
 
-// Initialize skill items with initial state
+// Initialize skill items with subtle initial state
 document.addEventListener('DOMContentLoaded', () => {
     const skillItems = document.querySelectorAll('.skill-item');
     skillItems.forEach(item => {
         item.style.opacity = '0';
         item.style.transform = 'translateX(-20px)';
-        item.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+        item.style.transition = 'all 0.6s ease';
     });
 });
 
-// Back to top button
+// Professional back to top button
 function createBackToTopButton() {
     const backToTop = document.createElement('button');
     backToTop.innerHTML = '<i class="fas fa-arrow-up"></i>';
@@ -242,7 +250,7 @@ function createBackToTopButton() {
         right: 30px;
         width: 50px;
         height: 50px;
-        background: #2563eb;
+        background: #1a1a1a;
         color: white;
         border: none;
         border-radius: 50%;
@@ -251,7 +259,8 @@ function createBackToTopButton() {
         visibility: hidden;
         transition: all 0.3s ease;
         z-index: 1000;
-        box-shadow: 0 5px 15px rgba(37, 99, 235, 0.3);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+        font-size: 1.1rem;
     `;
     
     document.body.appendChild(backToTop);
@@ -275,32 +284,32 @@ function createBackToTopButton() {
         });
     });
     
-    // Hover effects
+    // Subtle hover effects
     backToTop.addEventListener('mouseenter', () => {
         backToTop.style.transform = 'translateY(-3px)';
-        backToTop.style.boxShadow = '0 8px 25px rgba(37, 99, 235, 0.4)';
+        backToTop.style.boxShadow = '0 6px 25px rgba(0, 0, 0, 0.2)';
     });
     
     backToTop.addEventListener('mouseleave', () => {
         backToTop.style.transform = 'translateY(0)';
-        backToTop.style.boxShadow = '0 5px 15px rgba(37, 99, 235, 0.3)';
+        backToTop.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.15)';
     });
 }
 
 // Initialize back to top button
 createBackToTopButton();
 
-// Add loading animation to page elements
+// Smooth loading animation
 window.addEventListener('load', () => {
     document.body.classList.add('loaded');
     
-    // Add loading class to elements
-    const loadingElements = document.querySelectorAll('.skill-category, .project-card, .certificate-card');
+    // Add loading class to elements with staggered timing
+    const loadingElements = document.querySelectorAll('.skill-category, .project-card, .certificate-card, .interest-category');
     loadingElements.forEach((el, index) => {
         el.classList.add('loading');
         setTimeout(() => {
             el.classList.add('loaded');
-        }, index * 100);
+        }, index * 150);
     });
 });
 
@@ -309,6 +318,19 @@ function copyPhoneNumber() {
     const phoneNumber = '+91 8590814137';
     navigator.clipboard.writeText(phoneNumber).then(() => {
         showNotification('Phone number copied to clipboard!', 'success');
+        
+        // Add subtle visual feedback
+        const phoneElements = document.querySelectorAll('.contact-item p, .footer-section p');
+        phoneElements.forEach(element => {
+            if (element.textContent.includes('8590814137')) {
+                element.style.color = '#1a1a1a';
+                element.style.fontWeight = '600';
+                setTimeout(() => {
+                    element.style.color = '';
+                    element.style.fontWeight = '';
+                }, 1000);
+            }
+        });
     }).catch(() => {
         showNotification('Failed to copy phone number', 'error');
     });
@@ -321,16 +343,29 @@ document.addEventListener('DOMContentLoaded', () => {
         if (element.textContent.includes('8590814137')) {
             element.style.cursor = 'pointer';
             element.title = 'Click to copy';
+            element.style.transition = 'all 0.3s ease';
             element.addEventListener('click', copyPhoneNumber);
+            
+            // Add subtle hover effect
+            element.addEventListener('mouseenter', () => {
+                element.style.color = '#1a1a1a';
+                element.style.fontWeight = '600';
+            });
+            
+            element.addEventListener('mouseleave', () => {
+                element.style.color = '';
+                element.style.fontWeight = '';
+            });
         }
     });
 });
 
-// Add CSS for active navigation link
+// Add professional CSS for active navigation link and notifications
 const style = document.createElement('style');
 style.textContent = `
     .nav-link.active {
-        color: #2563eb !important;
+        color: #1a1a1a !important;
+        font-weight: 600 !important;
     }
     
     .nav-link.active::after {
@@ -352,10 +387,69 @@ style.textContent = `
         cursor: pointer;
         padding: 0;
         line-height: 1;
+        transition: opacity 0.3s ease;
     }
     
     .notification-close:hover {
         opacity: 0.8;
     }
+    
+    /* Smooth transitions for all interactive elements */
+    * {
+        transition: all 0.3s ease;
+    }
+    
+    /* Enhanced focus states for form elements */
+    .form-group input:focus,
+    .form-group textarea:focus {
+        transform: scale(1.01);
+    }
+    
+    /* Enhanced mobile menu animation */
+    .nav-menu.active {
+        animation: slideIn 0.3s ease;
+    }
+    
+    @keyframes slideIn {
+        from {
+            opacity: 0;
+            transform: translateY(-10px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
 `;
-document.head.appendChild(style); 
+document.head.appendChild(style);
+
+// Smooth reveal animation for sections
+function revealOnScroll() {
+    const sections = document.querySelectorAll('section');
+    sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.clientHeight;
+        const windowHeight = window.innerHeight;
+        
+        if (window.pageYOffset > sectionTop - windowHeight + 100) {
+            section.style.opacity = '1';
+            section.style.transform = 'translateY(0)';
+        }
+    });
+}
+
+// Initialize section reveal
+document.addEventListener('DOMContentLoaded', () => {
+    const sections = document.querySelectorAll('section');
+    sections.forEach(section => {
+        section.style.opacity = '0';
+        section.style.transform = 'translateY(20px)';
+        section.style.transition = 'all 0.6s ease';
+    });
+    
+    // Trigger initial reveal
+    setTimeout(revealOnScroll, 100);
+});
+
+// Add scroll event for section reveal
+window.addEventListener('scroll', revealOnScroll); 
