@@ -162,7 +162,7 @@ const observer = new IntersectionObserver((entries) => {
 
 // Observe elements for animation
 document.addEventListener('DOMContentLoaded', () => {
-    const animateElements = document.querySelectorAll('.skill-category, .project-card, .certificate-card, .info-item, .contact-item, .interest-category');
+    const animateElements = document.querySelectorAll('.skill-category, .project-card, .certificate-card, .info-item, .contact-item, .interest-category, .internship-card');
     animateElements.forEach(el => {
         observer.observe(el);
     });
@@ -304,7 +304,7 @@ window.addEventListener('load', () => {
     document.body.classList.add('loaded');
     
     // Add loading class to elements with staggered timing
-    const loadingElements = document.querySelectorAll('.skill-category, .project-card, .certificate-card, .interest-category');
+    const loadingElements = document.querySelectorAll('.skill-category, .project-card, .certificate-card, .interest-category, .internship-card');
     loadingElements.forEach((el, index) => {
         el.classList.add('loading');
         setTimeout(() => {
